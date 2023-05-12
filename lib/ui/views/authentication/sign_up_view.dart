@@ -27,21 +27,25 @@ class _SignUpViewState extends State<SignUpView> {
             padding:
                 EdgeInsets.symmetric(horizontal: SizingConfig.defaultPadding),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: AppText.heading4(
-                    "MyContactsApp",
-                    color: AppColors.primaryColor,
+                Padding(
+                  padding: const EdgeInsets.only(top: 70),
+                  child: Center(
+                    child: AppText.heading4(
+                      "MyContactsApp",
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: context.deviceHeightPercentage(percentage: 18),
+                  height: context.deviceHeightPercentage(percentage: 10),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText.heading2(
-                      "Sign In",
+                      "Sign Up",
                       color: AppColors.primaryColor,
                     ),
                     const SizedBox(height: 5),
@@ -49,7 +53,7 @@ class _SignUpViewState extends State<SignUpView> {
                   ],
                 ),
                 SizedBox(
-                  height: context.deviceHeightPercentage(percentage: 7.8),
+                  height: context.deviceHeightPercentage(percentage: 5),
                 ),
                 AppTextField(
                   controller: emailController,
@@ -65,21 +69,24 @@ class _SignUpViewState extends State<SignUpView> {
                   validator: FieldValidators.password,
                 ),
                 AppTextField(
-                  controller: passwordController,
+                  controller: confirmPasswordController,
                   hintText: "********",
                   title: "Confirm Password",
                   isPassword: true,
                   validator: FieldValidators.password,
                 ),
                 SizedBox(
-                  height: context.deviceHeightPercentage(percentage: 10),
+                  height: context.deviceHeightPercentage(percentage: 2),
                 ),
                 AppLongButton(
                   title: "Create Account",
-                  onTap: () {},
+                  onTap: () {
+                    _navigationService
+                        .navigateToReplace(NavigationRoutes.EMAIL_VERIFICATION);
+                  },
                 ),
                 SizedBox(
-                  height: context.deviceHeightPercentage(percentage: 7),
+                  height: context.deviceHeightPercentage(percentage: 4),
                 ),
                 Center(
                   child: Text.rich(
@@ -95,8 +102,9 @@ class _SignUpViewState extends State<SignUpView> {
                                   .navigateTo(NavigationRoutes.LOGIN);
                             },
                           style: bodySmall.copyWith(
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w700),
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w700,
+                          ),
                         )
                       ],
                     ),

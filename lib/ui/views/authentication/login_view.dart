@@ -48,9 +48,15 @@ class _LoginViewState extends State<LoginView> {
                   title: "Email",
                   hintText: "example@gmail.com",
                 ),
-                AppText.body(
-                  "Forgot password?",
-                  color: AppColors.primaryColor,
+                const SizedBox(
+                  height: 5,
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: AppText.body(
+                    "Forgot password?",
+                    color: AppColors.primaryColor,
+                  ),
                 ),
                 AppTextField(
                   isPassword: true,

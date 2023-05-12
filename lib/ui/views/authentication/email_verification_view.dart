@@ -28,7 +28,7 @@ class EmailVerificationView extends StatelessWidget {
               AppText.body("Please check your email to verify your"),
               AppText.body("mycontactapp account"),
               const SizedBox(
-                height: 16,
+                height: 30,
               ),
               AppShortButton(
                 title: "Done",
