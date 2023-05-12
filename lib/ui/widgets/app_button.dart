@@ -19,7 +19,35 @@ class AppLongButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
           borderRadius: const BorderRadius.all(
-            Radius.circular(12),
+            Radius.circular(8),
+          ),
+        ),
+        alignment: Alignment.center,
+        child: AppText.bodyLarge(
+          title,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}
+
+class AppShortButton extends StatelessWidget {
+  final String title;
+  final void Function()? onTap;
+  const AppShortButton({super.key, required this.title, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 55,
+        width: 180,
+        decoration: BoxDecoration(
+          color: AppColors.primaryColor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(8),
           ),
         ),
         alignment: Alignment.center,

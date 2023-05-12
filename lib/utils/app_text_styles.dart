@@ -36,7 +36,7 @@ TextStyle bodySmall = GoogleFonts.poppins(
   fontWeight: FontWeight.w500,
 );
 TextStyle bodyLarge = GoogleFonts.poppins(
-  fontSize: 17,
+  fontSize: 15,
   fontWeight: FontWeight.w600,
 );
 TextStyle caption = GoogleFonts.poppins(

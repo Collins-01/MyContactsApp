@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_contacts/ui/widgets/app_text.dart';
-
 import '../../utils/utils.dart';
 
 class AppTextField extends StatefulWidget {
@@ -31,7 +30,10 @@ class _AppTextFieldState extends State<AppTextField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppText.bodyLarge(widget.title),
+          AppText.bodyLarge(
+            widget.title,
+            color: AppColors.primaryColor,
+          ),
           const SizedBox(
             height: 8,
           ),
@@ -53,6 +55,7 @@ class _AppTextFieldState extends State<AppTextField> {
                   widget.isPassword ? (isVisible ? true : false) : false,
               controller: widget.controller,
               decoration: InputDecoration(
+                filled: true,
                 contentPadding: const EdgeInsets.only(top: 17, left: 10),
                 border: InputBorder.none,
                 hintText: widget.hintText,

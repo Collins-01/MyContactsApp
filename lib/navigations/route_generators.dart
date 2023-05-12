@@ -7,7 +7,7 @@ class RouteGenerators {
     switch (routeSettings.name) {
       case NavigationRoutes.LOGIN:
         return MaterialPageRoute(
-          builder: (_) => LoginView(),
+          builder: (_) => const LoginView(),
         );
       case NavigationRoutes.SIGNUP:
         return MaterialPageRoute(
@@ -16,7 +16,7 @@ class RouteGenerators {
 
       case NavigationRoutes.EMAIL_VERIFICATION:
         return MaterialPageRoute(
-          builder: (_) => const EmailVerificationView(),
+          builder: (_) => EmailVerificationView(),
         );
 
       case NavigationRoutes.HOME:
