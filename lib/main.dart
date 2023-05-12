@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:my_contacts/ui/views/views.dart';
 import 'navigations/navigations.dart';
 
-void main() {
+void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
+  await initHiveForFlutter();
   runApp(const MyApp());
 }
 

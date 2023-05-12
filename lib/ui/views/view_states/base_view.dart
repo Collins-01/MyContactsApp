@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_contacts/ui/views/base_viewmodel.dart';
+import 'package:my_contacts/ui/views/view_states/view_states.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/locator.dart';
+import '../../../core/locator.dart';
 
 class BaseView<T extends BaseViewModel> extends StatefulWidget {
   final Widget Function(BuildContext context, T model, Widget? child) builder;
@@ -12,8 +12,8 @@ class BaseView<T extends BaseViewModel> extends StatefulWidget {
   const BaseView({
     super.key,
     required this.builder,
-    required this.onModelReady,
-    required this.onModelDisposed,
+    this.onModelReady,
+    this.onModelDisposed,
   });
 
   @override
