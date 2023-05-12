@@ -16,7 +16,12 @@ class AddContactView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            AppText.heading4("Add Contact"),
+            const SizedBox(
+              height: 20,
+            ),
+            Align(
+                alignment: Alignment.topLeft,
+                child: AppText.heading4("Add Contact")),
             const SizedBox(
               height: 20,
             ),

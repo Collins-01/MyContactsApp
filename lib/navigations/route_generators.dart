@@ -21,7 +21,7 @@ class RouteGenerators {
 
       case NavigationRoutes.HOME:
         return MaterialPageRoute(
-          builder: (_) => const HomeView(),
+          builder: (_) => HomeView(),
         );
       case NavigationRoutes.SPLASH_SCREEN:
         return MaterialPageRoute(
