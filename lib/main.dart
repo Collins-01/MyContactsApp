@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:my_contacts/core/locator.dart';
 import 'package:my_contacts/ui/views/views.dart';
 import 'navigations/navigations.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   await initHiveForFlutter();
+  setUpLocator();
   runApp(const MyApp());
 }
 

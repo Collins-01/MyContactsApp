@@ -20,8 +20,7 @@ class AuthServiceImpl extends AuthService {
   }
 
   @override
-  Future<void> signUp(String email, String password) {
-    // TODO: implement signUp
-    throw UnimplementedError();
+  Future<void> signUp(String email, String password) async {
+    await Future.delayed(const Duration(seconds: 2));
   }
 }

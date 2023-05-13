@@ -3,30 +3,28 @@ import 'package:my_contacts/core/data/remote/auth/auth.dart';
 import 'package:my_contacts/core/locator.dart';
 import 'package:my_contacts/core/network_service/network_service.dart';
 import 'package:my_contacts/navigations/navigations.dart';
+import 'package:my_contacts/ui/views/view_states/base_viewmodel.dart';
+import 'package:my_contacts/ui/views/view_states/view_model_state.dart';
+import 'package:my_contacts/utils/utils.dart';
 
-import '../../../../utils/utils.dart';
-import '../../view_states/view_states.dart';
-
-class LoginViewModel extends BaseViewModel {
+class SignUpViewModel extends BaseViewModel {
   final AuthRepository _authRepository = locator();
-  final _log = appLogger(LoginViewModel);
+  final _log = appLogger(SignUpViewModel);
   final NavigationService _navigationService = NavigationService.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  login(String email, String password) async {
+  signUp(String email, String password) async {
     if (!formKey.currentState!.validate()) {
       return;
     }
     try {
       changeState(const ViewModelState.busy());
-      _log.i("Testing Login");
-      _log.e("Error Testing Login");
-      await _authRepository.login(email, password);
+      await _authRepository.signUp(email, password);
       changeState(const ViewModelState.idle());
-      await _navigationService.navigateToReplace(NavigationRoutes.HOME);
+      _navigationService.navigateToReplace(NavigationRoutes.EMAIL_VERIFICATION);
     } on Failure catch (e) {
       changeState(ViewModelState.error(e));
-      _log.i("Error Logging In : ${e.message}");
+      _log.e("Error Logging In : ${e.message}");
     } catch (e) {
       _log.e(e.toString());
     }

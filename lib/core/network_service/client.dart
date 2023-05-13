@@ -56,7 +56,7 @@ class NetworkClient {
     if (exception?.linkException != null) {
       log("Link Exception ::: ${exception?.linkException.toString()}");
       throw UserDefinedExceptions(
-          "Link Exception Error", exception?.linkException?.originalException);
+          "Link Exception Error", exception?.graphqlErrors.first.message ?? "");
     }
     if (exception!.graphqlErrors.isNotEmpty) {
       final extensions = exception.graphqlErrors.first.extensions;

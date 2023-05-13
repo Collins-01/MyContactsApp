@@ -24,7 +24,7 @@ class AppTextField extends StatefulWidget {
 }
 
 class _AppTextFieldState extends State<AppTextField> {
-  bool isVisible = false;
+  bool isObscured = true;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,11 +54,9 @@ class _AppTextFieldState extends State<AppTextField> {
             child: TextFormField(
               keyboardType: widget.keyboardType,
               validator: widget.validator,
-              obscureText:
-                  widget.isPassword ? (isVisible ? true : false) : false,
+              obscureText: widget.isPassword ? (isObscured) : false,
               controller: widget.controller,
               decoration: InputDecoration(
-                filled: true,
                 contentPadding: const EdgeInsets.only(top: 17, left: 10),
                 border: InputBorder.none,
                 hintText: widget.hintText,
@@ -66,7 +64,7 @@ class _AppTextFieldState extends State<AppTextField> {
                     ? const SizedBox.shrink()
                     : IconButton(
                         onPressed: () => toggleVisibility(),
-                        icon: Icon(isVisible
+                        icon: Icon(!isObscured
                             ? Icons.visibility
                             : Icons.visibility_off),
                       ),
@@ -80,7 +78,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   toggleVisibility() {
     setState(() {
-      isVisible = !isVisible;
+      isObscured = !isObscured;
     });
   }
 }
