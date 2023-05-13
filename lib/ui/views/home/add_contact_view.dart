@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_contacts/ui/views/home/viewmodels/viewmodels.dart';
 import 'package:my_contacts/ui/views/view_states/base_view.dart';
 import 'package:my_contacts/ui/widgets/widgets.dart';
@@ -38,12 +39,20 @@ class AddContactView extends StatelessWidget {
                         hintText: "Contact name",
                         validator: (v) =>
                             FieldValidators.string(v, "Contact name"),
+                        inputFormatters: [
+                          FilteringTextInputFormatter(RegExp("[a-zA-Z]"),
+                              allow: true),
+                        ],
                       ),
                       AppTextField(
                         controller: phoneController,
                         title: "Phone",
                         hintText: "+234",
                         keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter(RegExp("[0-9]"),
+                              allow: true),
+                        ],
                         validator: (v) =>
                             FieldValidators.string(v, 'Phone number'),
                       ),
@@ -52,6 +61,10 @@ class AddContactView extends StatelessWidget {
                         title: "Email",
                         hintText: "example@example.com",
                         validator: FieldValidators.email,
+                        keyboardType: TextInputType.emailAddress,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.deny(" ")
+                        ],
                       ),
                       AppTextField(
                         controller: addressController,

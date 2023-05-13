@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_contacts/ui/widgets/app_text.dart';
 import '../../utils/utils.dart';
 
@@ -9,6 +10,7 @@ class AppTextField extends StatefulWidget {
   final bool isPassword;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
   const AppTextField({
     super.key,
     required this.controller,
@@ -17,6 +19,7 @@ class AppTextField extends StatefulWidget {
     this.isPassword = false,
     this.validator,
     this.keyboardType,
+    this.inputFormatters,
   });
 
   @override
@@ -52,6 +55,7 @@ class _AppTextFieldState extends State<AppTextField> {
               ),
             ),
             child: TextFormField(
+              inputFormatters: widget.inputFormatters,
               keyboardType: widget.keyboardType,
               validator: widget.validator,
               obscureText: widget.isPassword ? (isObscured) : false,
