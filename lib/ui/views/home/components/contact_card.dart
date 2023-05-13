@@ -12,15 +12,20 @@ class ContactCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 22),
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(),
+          borderRadius: const BorderRadius.all(Radius.circular(6)),
+          border: Border.all(width: 0.1),
         ),
         child: Column(
           children: [
             // * Names and Icon
             Container(
               decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(6),
+                  topRight: Radius.circular(6),
+                ),
                 color: const Color(0xfffef4f4),
-                border: Border.all(width: 0.9),
+                border: Border.all(width: 0.1),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),

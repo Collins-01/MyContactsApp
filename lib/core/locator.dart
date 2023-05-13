@@ -22,4 +22,5 @@ setUpLocator() {
   locator.registerFactory(() => SignUpViewModel());
   // *Home
   locator.registerFactory(() => AddContactViewModel());
+  locator.registerFactory(() => HomeViewModel());
 }
