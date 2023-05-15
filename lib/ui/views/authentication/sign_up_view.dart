@@ -40,15 +40,14 @@ class _SignUpViewState extends State<SignUpView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 70),
-                    child: Center(
-                      child: AppText.heading4(
-                        "MyContactsApp",
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
+                  SizedBox(
+                    height: context.deviceHeightPercentage(percentage: 8),
                   ),
+                  Center(
+                      child: AppText.heading2(
+                    "MyContactsApp",
+                    color: AppColors.primaryColor,
+                  )),
                   SizedBox(
                     height: context.deviceHeightPercentage(percentage: 10),
                   ),

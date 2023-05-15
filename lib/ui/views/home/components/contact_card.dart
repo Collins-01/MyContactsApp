@@ -65,7 +65,10 @@ class ContactCard extends StatelessWidget {
                       const SizedBox(
                         width: 6,
                       ),
-                      AppText.body("johndoe@gmail.com")
+                      AppText.body(
+                        "johndoe@gmail.com",
+                        maxLines: 1,
+                      )
                     ],
                   )
                 ],
@@ -82,7 +85,11 @@ class ContactCard extends StatelessWidget {
                   const SizedBox(
                     width: 6,
                   ),
-                  AppText.body("Pariatur aliqua amet ipsum nostrud qui.")
+                  Expanded(
+                    child: AppText.body(
+                      "Pariatur aliqua amet ipsum nostrud qui .",
+                    ),
+                  )
                 ],
               ),
             )

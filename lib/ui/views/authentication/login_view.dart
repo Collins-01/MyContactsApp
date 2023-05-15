@@ -45,8 +45,16 @@ class _LoginViewState extends State<LoginView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                          height:
-                              context.deviceHeightPercentage(percentage: 18)),
+                        height: context.deviceHeightPercentage(percentage: 8),
+                      ),
+                      Center(
+                          child: AppText.heading2(
+                        "MyContactsApp",
+                        color: AppColors.primaryColor,
+                      )),
+                      SizedBox(
+                        height: context.deviceHeightPercentage(percentage: 10),
+                      ),
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -58,7 +66,7 @@ class _LoginViewState extends State<LoginView> {
                             AppText.small("Log Into your mycontactapp account")
                           ]),
                       SizedBox(
-                        height: context.deviceHeightPercentage(percentage: 7.8),
+                        height: context.deviceHeightPercentage(percentage: 6.5),
                       ),
                       AppTextField(
                         validator: FieldValidators.email,
@@ -100,7 +108,7 @@ class _LoginViewState extends State<LoginView> {
                       Center(
                         child: Text.rich(
                           TextSpan(
-                            text: "Already have an account? ",
+                            text: "Don't have an account? ",
                             style: bodySmall,
                             children: <TextSpan>[
                               TextSpan(

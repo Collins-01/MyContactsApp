@@ -40,9 +40,10 @@ class _HomeViewState extends State<HomeView> {
             }
           },
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 50),
             decoration: BoxDecoration(
-                color: _isOpened ? Colors.black.withOpacity(.5) : null),
+              color: _isOpened ? Colors.black.withOpacity(.2) : null,
+            ),
             child: SafeArea(
               child: Column(
                 children: [

@@ -6,7 +6,7 @@ import 'navigations/navigations.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
-  await initHiveForFlutter();
+  await initHiveForFlutter(); //* For GraphQl
   setUpLocator();
   runApp(const MyApp());
 }
