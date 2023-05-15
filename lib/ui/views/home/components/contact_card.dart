@@ -46,30 +46,37 @@ class ContactCard extends StatelessWidget {
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Row(
-                    children: [
-                      const Icon(Icons.phone),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      AppText.body("+2348163509379")
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.phone),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        AppText.body("+2348163509379")
+                      ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      const Icon(Icons.email_outlined),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      AppText.body(
-                        "johndoe@gmail.com",
-                        maxLines: 1,
-                      )
-                    ],
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.email_outlined),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        AppText.body(
+                          "johndoe@gmail.com",
+                          maxLines: 1,
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
