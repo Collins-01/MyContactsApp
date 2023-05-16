@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:my_contacts/core/network_service/exceptions.dart';
 import 'package:my_contacts/utils/utils.dart';
 
-HttpLink link = HttpLink("https://rickandmortyapi.com/graphql");
+HttpLink link = HttpLink("https://api.github.com/graphql");
 
+// https://api.github.com/graphql
 class NetworkClient {
   NetworkClient._();
   static final NetworkClient _instance = NetworkClient._();
@@ -41,10 +40,11 @@ class NetworkClient {
   }) async {
     final MutationOptions options = MutationOptions(
       document: gql(mutation),
-      // variables: variables,
+      variables: variables,
       cacheRereadPolicy: CacheRereadPolicy.ignoreAll,
     );
     final QueryResult response = await qlClient.mutate(options);
+
     if (!response.hasException) {
       return response.data;
     }
@@ -52,17 +52,20 @@ class NetworkClient {
   }
 
   _getErrorFromRequst(OperationException? exception) {
-    _log.e("Error From GQL Reques", error: exception.toString());
+    _log.e("Error From GQL Request", error: exception.toString());
     if (exception?.linkException != null) {
-      log("Link Exception ::: ${exception?.linkException.toString()}");
       throw UserDefinedExceptions(
           "Link Exception Error", exception?.graphqlErrors.first.message ?? "");
     }
     if (exception!.graphqlErrors.isNotEmpty) {
-      final extensions = exception.graphqlErrors.first.extensions;
-      log("GraphQl Error ::::: ${exception.graphqlErrors[0].message}");
+      for (var i = 0; i < exception.graphqlErrors.length; i++) {
+        _log.i(
+            "Exception for index $i == ${exception.graphqlErrors[i].message}");
+      }
       throw UserDefinedExceptions(
           "Gql Errors [0]", exception.graphqlErrors[0].message);
     }
+    throw throw UserDefinedExceptions(
+        "Unknown", "An unkown exception has occured.");
   }
 }

@@ -42,6 +42,7 @@ dependencies:
   provider: ^6.0.5
   freezed_annotation: ^2.2.0
   graphql_flutter: ^5.1.2
+  flutter_flushbar: ^0.0.2
 
 dev_dependencies:
   flutter_test:

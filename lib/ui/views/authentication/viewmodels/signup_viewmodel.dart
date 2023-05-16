@@ -5,6 +5,7 @@ import 'package:my_contacts/core/network_service/network_service.dart';
 import 'package:my_contacts/navigations/navigations.dart';
 import 'package:my_contacts/ui/views/view_states/base_viewmodel.dart';
 import 'package:my_contacts/ui/views/view_states/view_model_state.dart';
+import 'package:my_contacts/ui/widgets/app_flushbar.dart';
 import 'package:my_contacts/utils/utils.dart';
 
 class SignUpViewModel extends BaseViewModel {
@@ -23,7 +24,10 @@ class SignUpViewModel extends BaseViewModel {
       changeState(const ViewModelState.idle());
       _navigationService.navigateToReplace(NavigationRoutes.EMAIL_VERIFICATION);
     } on Failure catch (e) {
+      changeState(const ViewModelState.idle());
       changeState(ViewModelState.error(e));
+      AppFlushBar.showError(title: e.title, message: e.message);
+
       _log.e("Error Logging In : ${e.message}");
     } catch (e) {
       _log.e(e.toString());
