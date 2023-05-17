@@ -1,0 +1,32 @@
+{
+  "name": "my_contacts",
+  "version": "1.0.0",
+  "description": "get-graphql-schema https://demo.isidoreagric.co > schema.graphql",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "generate": "graphql-codegen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Collins-01/MyContactsApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Collins-01/MyContactsApp/issues"
+  },
+  "homepage": "https://github.com/Collins-01/MyContactsApp#readme",
+  "dependencies": {
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.1",
+    "@graphql-codegen/flutter-freezed": "^3.0.2",
+    "typescript": "^5.0.4"
+  }
+}

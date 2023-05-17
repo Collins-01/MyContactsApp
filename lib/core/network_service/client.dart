@@ -2,7 +2,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:my_contacts/core/network_service/exceptions.dart';
 import 'package:my_contacts/utils/utils.dart';
 
-HttpLink link = HttpLink("https://api.github.com/graphql");
+HttpLink link = HttpLink("https://demo.isidoreagric.co/graphql");
 
 // https://api.github.com/graphql
 class NetworkClient {
