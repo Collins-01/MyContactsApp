@@ -19,8 +19,6 @@ class AddContactViewModel extends BaseViewModel {
     }
     try {
       changeState(const ViewModelState.busy());
-      _log.i("Testing Login");
-      _log.e("Error Testing Login");
       await _contactRepository.createContact(CreateContactDto(
           address: address, email: email, name: name, phone: phone));
       changeState(const ViewModelState.idle());
@@ -30,6 +28,11 @@ class AddContactViewModel extends BaseViewModel {
       _log.i("Error Logging In : ${e.message}");
     } catch (e) {
       _log.e(e.toString());
+      changeState(
+        ViewModelState.error(
+          UserDefinedExceptions("Unknown", e.toString()),
+        ),
+      );
     }
   }
 }

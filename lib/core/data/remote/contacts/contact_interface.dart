@@ -2,9 +2,10 @@ import 'package:my_contacts/core/data/remote/contacts/dtos/dtos.dart';
 import 'package:my_contacts/core/models/contact_model.dart';
 
 abstract class ContactInterface {
-  Future createContact(CreateContactDto dto);
-  Future deleteContact(String id);
-  Future<List<ContactModel>> getContacts();
+  Future<void> createContact(CreateContactDto dto);
+  Future<void> deleteContact(String id);
+  Future<void> getContacts();
+  List<ContactModel> get contacts;
 }
 
 abstract class ContactService extends ContactInterface {}

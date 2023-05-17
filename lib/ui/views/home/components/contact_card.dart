@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:my_contacts/core/models/contact_model.dart';
 import 'package:my_contacts/utils/utils.dart';
 
 import '../../../widgets/widgets.dart';
 
 class ContactCard extends StatelessWidget {
-  const ContactCard({super.key});
+  final ContactModel contact;
+  const ContactCard({super.key, required this.contact});
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +34,51 @@ class ContactCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AppText.bodyLarge("John Doe"),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.more_vert,
-                        color: AppColors.primaryColor,
-                      ),
+                    AppText.bodyLarge(contact.name),
+                    PopupMenuButton(
+                      onSelected: (value) {
+                        if (value == 'delete') {
+                          showDialog(
+                              context: context,
+                              builder: (_) => AlertDialog(
+                                    title: AppText.heading6("Delete Contact"),
+                                    content: AppText.body(
+                                        "Are you sure you want to delete ${contact.name}'s contact? "),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: AppText.body(
+                                          "Yes",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: AppText.body(
+                                          "No",
+                                          color: AppColors.primaryColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ));
+                        }
+                      },
+                      itemBuilder: (BuildContext bc) {
+                        return [
+                          PopupMenuItem(
+                            value: 'delete',
+                            child: AppText.body("Delete"),
+                          ),
+                          PopupMenuItem(
+                            value: 'update',
+                            child: AppText.body("Update"),
+                          ),
+                        ];
+                      },
                     )
                   ],
                 ),
@@ -50,32 +90,42 @@ class ContactCard extends StatelessWidget {
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.phone),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        AppText.body("+2348163509379")
-                      ],
+                  // * Phone Number Section
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 1),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.phone),
+                          const SizedBox(
+                            width: 6,
+                          ),
+                          AppText.body(
+                            contact.phone,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.email_outlined),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        AppText.body(
-                          "johndoe@gmail.com",
-                          maxLines: 1,
-                        )
-                      ],
+                  // const Spacer(),
+                  // * Email Section
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 1),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.email_outlined),
+                          const SizedBox(
+                            width: 6,
+                          ),
+                          AppText.body(
+                            contact.email,
+                            maxLines: 1,
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
@@ -94,7 +144,7 @@ class ContactCard extends StatelessWidget {
                   ),
                   Expanded(
                     child: AppText.body(
-                      "Pariatur aliqua amet ipsum nostrud qui .",
+                      contact.address,
                     ),
                   )
                 ],

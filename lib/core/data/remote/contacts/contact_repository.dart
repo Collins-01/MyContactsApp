@@ -4,6 +4,7 @@ import 'package:my_contacts/core/models/contact_model.dart';
 
 class ContactRepositoryImpl extends ContactRepository {
   final ContactService _contactService;
+
   ContactRepositoryImpl({ContactService? contactService})
       : _contactService = contactService ?? locator();
   @override
@@ -17,7 +18,10 @@ class ContactRepositoryImpl extends ContactRepository {
   }
 
   @override
-  Future<List<ContactModel>> getContacts() async {
+  Future<void> getContacts() async {
     return await _contactService.getContacts();
   }
+
+  @override
+  List<ContactModel> get contacts => _contactService.contacts;
 }

@@ -143,6 +143,18 @@ class _HomeViewState extends State<HomeView> {
                   Builder(builder: (context) {
                     return model.state.when(
                       idle: () {
+                        if (model.contacts.isEmpty) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                              top: context.deviceHeightPercentage(
+                                percentage: 25,
+                              ),
+                            ),
+                            child: Center(
+                              child: AppText.heading6("No Contacts Saved"),
+                            ),
+                          );
+                        }
                         return Expanded(
                             child: Padding(
                           padding: EdgeInsets.symmetric(
@@ -151,8 +163,10 @@ class _HomeViewState extends State<HomeView> {
                             child: Column(
                               children: [
                                 ...List.generate(
-                                  10,
-                                  (index) => const ContactCard(),
+                                  model.contacts.length,
+                                  (index) => ContactCard(
+                                    contact: model.contacts[index],
+                                  ),
                                 ),
                               ],
                             ),
@@ -160,7 +174,16 @@ class _HomeViewState extends State<HomeView> {
                         ));
                       },
                       error: (e) => Center(
-                        child: AppText.body(e.message),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppText.heading4(e.title),
+                            const SizedBox(
+                              height: 7,
+                            ),
+                            AppText.body(e.message)
+                          ],
+                        ),
                       ),
                       busy: () => const Center(
                         child: CircularProgressIndicator.adaptive(),
