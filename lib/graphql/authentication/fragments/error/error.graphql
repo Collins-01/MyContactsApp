@@ -1,0 +1,5 @@
+fragment ErrorResponse on Error {
+  fullMessage
+  message
+  property
+}

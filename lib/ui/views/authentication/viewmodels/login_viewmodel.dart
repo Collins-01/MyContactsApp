@@ -21,15 +21,13 @@ class LoginViewModel extends BaseViewModel {
     try {
       changeState(const ViewModelState.busy());
 
-      _log.i("Testing Login");
       await _authRepository.login(email, password);
       changeState(const ViewModelState.idle());
       await _navigationService.navigateToReplace(NavigationRoutes.HOME);
     } on Failure catch (e) {
       changeState(const ViewModelState.idle());
-      AppFlushBar.showError(title: e.title, message: e.message);
-
       changeState(ViewModelState.error(e));
+      AppFlushBar.showError(title: e.title, message: e.message);
 
       _log.i("Error Logging In : ${e.message}");
     } catch (e) {

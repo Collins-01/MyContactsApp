@@ -56,7 +56,7 @@ class _HomeViewState extends State<HomeView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AppText.heading3(
-                              "Hi, ",
+                              "Hi, ${model.userModel?.email.split('@').first ?? ''} ",
                               color: AppColors.primaryColor,
                             ),
                             AppText.body("How are you doing today?")

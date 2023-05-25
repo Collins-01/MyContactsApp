@@ -1,64 +1,39 @@
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:my_contacts/core/data/remote/auth/auth.dart';
+import 'package:my_contacts/core/data/remote/auth/login_response_payload.dart';
+import 'package:my_contacts/core/models/user_model.dart';
 import 'package:my_contacts/core/network_service/network_service.dart';
+import 'package:my_contacts/graphql/authentication/login/login.graphql.dart';
 import 'package:my_contacts/utils/utils.dart';
 
 class AuthServiceImpl extends AuthService {
   final _log = appLogger(AuthServiceImpl);
-  final NetworkClient _networkClient = NetworkClient.instance;
+  final NetworkClient _networkClient = NetworkClient();
+  UserModel? _userModel;
   @override
-  Future<void> login(String email, String password) async {
-    String login = '''
-      mutation Login(\$email: String!, \$password: String!) {
-          login(email: \$email, password: \$password) {
-             credentials {
-               token
-               },
-            errors {
-            message,
-            fullMessage,
-            property
-          },
-          status,
-          user {
-            email,
-            
-          }
-          }
-          }
+  Future<LoginResponsePayload> login(String email, String password) async {
+    // var i = await _networkClient.qlClient.mutate(MutationOptions(document: document))
+    // var r = await _networkClient.mutate<Mutation$Login, dynamic>(
+    //   Options$Mutation$Login()
+    //     transform: (e)=>_tranform(e),);
+    // _log.i("Response from Login: $r");
 
-     ''';
-    var response = await _networkClient.runMutation(
-      login,
-      variables: {"email": email, "password": password},
-    );
+    const fakeJson = {
+      'email': 'email@example.com',
+      'id': '123',
+    };
+    final kUser = UserModel.fromJson(fakeJson);
+    _userModel = kUser;
+    return LoginResponsePayload(token: 'ghgggccgghchchcgfcf', user: kUser);
+  }
 
-    return response;
+  _tranform(Mutation$Login e) {
+    _log.i("Transform Info ::  ${e.login}");
   }
 
   @override
-  Future<void> signUp(String email, String password) async {
-    String mutation = """
-          mutation SignUp(input: {\$email: String!, \$password: String!, \$passwordConfirmation: String!}) {
-          login(email: \$email, password: \$password) {
-             credentials {
-               token
-               },
-            errors {
-            message,
-            fullMessage,
-            property
-          },
-          status,
-          user {
-            email
-            
-          }
-          }
-}
+  Future<void> signUp(String email, String password) async {}
 
-     """;
-    var response = await _networkClient.runMutation(mutation);
-    _log.i(response, functionName: "SignUP");
-    return response;
-  }
+  @override
+  UserModel? get currentUser => _userModel;
 }

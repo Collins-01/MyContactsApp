@@ -1,0 +1,8 @@
+fragment UserLoginData on User {
+    createdAt
+    email
+    id
+    status
+    tokens
+    updatedAt
+}

@@ -1,0 +1,7 @@
+mutation SignUp($userInput: UserRegisterInput) {
+  signup(userInput: UserRegisterInput) {
+    status
+    ...ErrorResponse
+    ...UserLoginData
+  }
+}

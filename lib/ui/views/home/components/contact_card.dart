@@ -39,32 +39,33 @@ class ContactCard extends StatelessWidget {
                       onSelected: (value) {
                         if (value == 'delete') {
                           showDialog(
-                              context: context,
-                              builder: (_) => AlertDialog(
-                                    title: AppText.heading6("Delete Contact"),
-                                    content: AppText.body(
-                                        "Are you sure you want to delete ${contact.name}'s contact? "),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: AppText.body(
-                                          "Yes",
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: AppText.body(
-                                          "No",
-                                          color: AppColors.primaryColor,
-                                        ),
-                                      ),
-                                    ],
-                                  ));
+                            context: context,
+                            builder: (_) => AlertDialog(
+                              title: AppText.heading6("Delete Contact"),
+                              content: AppText.body(
+                                  "Are you sure you want to delete ${contact.name}'s contact? "),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: AppText.body(
+                                    "Yes",
+                                    color: Colors.red,
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: AppText.body(
+                                    "No",
+                                    color: AppColors.primaryColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
                         }
                       },
                       itemBuilder: (BuildContext bc) {
