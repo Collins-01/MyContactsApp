@@ -75,14 +75,16 @@ class AddContactView extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      AppLongButton(
-                        title: "Add Contact",
-                        onTap: () => model.createContact(
-                            nameController.text,
-                            phoneController.text,
-                            emailController.text,
-                            addressController.text),
-                      )
+                      model.isBusy
+                          ? const CircularProgressIndicator.adaptive()
+                          : AppLongButton(
+                              title: "Add Contact",
+                              onTap: () => model.createContact(
+                                  nameController.text,
+                                  phoneController.text,
+                                  emailController.text,
+                                  addressController.text),
+                            )
                     ],
                   ),
                 ),

@@ -10,8 +10,8 @@ final ContactRepository _contactRepository = locator();
 final AuthRepository _authRepository = locator();
 
 class HomeViewModel extends BaseViewModel {
-  final List<ContactModel> _contacts = _contactRepository.contacts;
-  List<ContactModel> get contacts => _contacts;
+  // final List<ContactModel> _contacts = _contactRepository.contacts;
+  List<ContactModel> contacts = _contactRepository.contacts;
 
   UserModel? userModel = _authRepository.currentUser;
 

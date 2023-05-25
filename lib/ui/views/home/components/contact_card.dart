@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_contacts/core/data/remote/contacts/contacts.dart';
+import 'package:my_contacts/core/locator.dart';
 import 'package:my_contacts/core/models/contact_model.dart';
+import 'package:my_contacts/navigations/navigation_service.dart';
 import 'package:my_contacts/utils/utils.dart';
 
 import '../../../widgets/widgets.dart';
@@ -46,8 +49,12 @@ class ContactCard extends StatelessWidget {
                                   "Are you sure you want to delete ${contact.name}'s contact? "),
                               actions: [
                                 TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
+                                  onPressed: () async {
+                                    final ContactRepository contactRepository =
+                                        locator();
+                                    await contactRepository
+                                        .deleteContact(contact.id);
+                                    NavigationService.instance.goBack();
                                   },
                                   child: AppText.body(
                                     "Yes",

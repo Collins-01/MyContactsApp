@@ -5,15 +5,29 @@ import 'package:my_contacts/core/models/contact_model.dart';
 class ContactServiceImpl extends ContactService with ChangeNotifier {
   // ignore: prefer_final_fields
   List<ContactModel> _contacts = [];
-  @override
-  Future createContact(CreateContactDto dto) async {
-    await Future.delayed(const Duration(seconds: 2));
+  delay([int duration = 2]) async {
+    await Future.delayed(Duration(seconds: duration));
   }
 
   @override
-  Future deleteContact(String id) {
-    // TODO: implement deleteContact
-    throw UnimplementedError();
+  Future createContact(CreateContactDto dto) async {
+    delay();
+    _contacts.add(
+      ContactModel(
+          id: '2',
+          name: dto.name,
+          email: dto.email,
+          phone: dto.phone,
+          address: dto.address),
+    );
+    refreshState();
+  }
+
+  @override
+  Future deleteContact(String id) async {
+    delay();
+    _contacts.removeWhere((element) => element.id == id);
+    refreshState();
   }
 
   @override
@@ -33,4 +47,8 @@ class ContactServiceImpl extends ContactService with ChangeNotifier {
 
   @override
   List<ContactModel> get contacts => _contacts;
+
+  refreshState() {
+    notifyListeners();
+  }
 }
