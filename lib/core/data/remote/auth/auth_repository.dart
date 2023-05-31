@@ -16,6 +16,7 @@ class AuthRepositoryImpl implements AuthRepository {
     var response = await _authService.login(email, password);
     String token = response.token;
     await _localCache.saveToken(token);
+    await _localCache.saveUserData(response.user.toJson());
     return response;
   }
 
