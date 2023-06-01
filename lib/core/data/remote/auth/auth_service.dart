@@ -60,12 +60,12 @@ class AuthServiceImpl extends AuthService {
   UserModel? _userModel;
   @override
   Future<LoginResponsePayload> login(String email, String password) async {
-    var response = await _networkClient.runMutation(loginMutation, variables: {
-      "email": email,
-      "password": password,
-    });
-    _log.i(response);
-
+    // var response = await _networkClient.runMutation(loginMutation, variables: {
+    //   "email": email,
+    //   "password": password,
+    // });
+    // _log.i(response);
+    await Future.delayed(const Duration(seconds: 2));
     const fakeJson = {
       'email': 'email@example.com',
       'id': '123',

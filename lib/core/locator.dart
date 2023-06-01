@@ -3,7 +3,6 @@ import 'package:my_contacts/core/data/local/local_cache_impl.dart';
 import 'package:my_contacts/core/data/remote/auth/auth.dart';
 import 'package:my_contacts/core/data/remote/contacts/contacts.dart';
 import 'package:my_contacts/core/network_service/client.dart';
-import 'package:my_contacts/core/network_service/gql_client_provider.dart';
 import 'package:my_contacts/ui/views/authentication/viewmodels/viewmodels.dart';
 import 'package:my_contacts/ui/views/home/viewmodels/viewmodels.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,7 +22,7 @@ setUpLocator() async {
 // * Network Client
   // final qlClient = await GraphqlClientProvider().createGraphQLClient();
   // locator.registerSingleton(qlClient);
-  // locator.registerLazySingleton(() => NetworkClient());
+  locator.registerLazySingleton(() => NetworkClient());
 
   // * Auth Module
   locator.registerLazySingleton<AuthService>(() => AuthServiceImpl());

@@ -5,7 +5,7 @@ import 'package:my_contacts/ui/views/views.dart';
 import 'navigations/navigations.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await initHiveForFlutter(); //* For GraphQl
   setUpLocator();
   runApp(const MyApp());

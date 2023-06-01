@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:my_contacts/core/data/remote/contacts/contacts.dart';
 import 'package:my_contacts/core/models/contact_model.dart';
 import 'package:my_contacts/core/network_service/client.dart';
 
-class ContactServiceImpl extends ContactService {
+class ContactServiceImpl extends ContactService with ChangeNotifier {
   final NetworkClient _networkClient = NetworkClient();
   // ignore: prefer_final_fields
   List<ContactModel> _contacts = [];
@@ -39,7 +40,7 @@ class ContactServiceImpl extends ContactService {
       ContactModel(
         id: '1',
         name: "John Doe",
-        email: "johndoe@gmail.com",
+        email: "john@gmail.com",
         phone: "+2348165458909",
         address: "No 35, Mikirom Hub, Texas, USA",
       ),
@@ -49,5 +50,7 @@ class ContactServiceImpl extends ContactService {
   @override
   List<ContactModel> get contacts => _contacts;
 
-  refreshState() {}
+  refreshState() {
+    notifyListeners();
+  }
 }
